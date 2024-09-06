@@ -1,0 +1,8 @@
+sn,Guideline,Command to Check,Expected Output
+1,Ensure 'Enforce password history' is set to '24 or more password(s)',net accounts ,24
+2,Ensure 'Maximum password age' is set to '365 or fewer days,(net accounts | Select-String "Maximum password age").ToString().Split(":")[1].Trim() | ForEach-Object { [int]$_ },365
+3,Ensure 'Minimum password age' is set to '1 or more day(s)',(net accounts | Select-String "Minimum password age").ToString().Split(":")[1].Trim() | ForEach-Object { [int]$_ },1
+4,Ensure 'Minimum password length' is set to '14 or more character(s)',(net accounts | Select-String "Minimum password length").ToString().Split(":")[1].Trim() | ForEach-Object { [int]$_ },14
+5,Ensure 'Password must meet complexity requirements' is set to 'Enabled',net accounts,Enable
+6,Ensure 'Relax minimum password length limits' is set to 'Enabled',net accounts,Disable
+7,Ensure 'Store passwords using reversible encryption' is set to 'Disabled',net accounts,Enable

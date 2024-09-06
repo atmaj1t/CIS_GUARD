@@ -1,0 +1,58 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    /* font-family: 'Montserrat Hairline', sans-serif; */
+    background-color: #121212;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+}
+
+.neon-text {
+    font-size: 3rem; 
+    font-weight: 100;
+    text-align: center;
+    margin: 0;
+    color: #0ff; 
+    text-shadow:
+        0 0 2px #0ff,
+        0 0 4px #0ff,
+        0 0 6px #0ff;
+    animation: neon-animation 2s ease-in-out infinite;
+}
+
+@keyframes neon-animation {
+    0% {
+        text-shadow:
+            0 0 2px #0ff,
+            0 0 4px #0ff,
+            0 0 6px #0ff;
+    }
+    50% {
+        text-shadow:
+            0 0 4px #0ff,
+            0 0 8px #0ff,
+            0 0 12px #0ff;
+    }
+    100% {
+        text-shadow:
+            0 0 2px #0ff,
+            0 0 4px #0ff,
+            0 0 6px #0ff;
+    }
+}
+
+
+.powered-by {
+    margin-top: 10px;
+    font-size: 0.6rem;
+    color: #888; 
+}

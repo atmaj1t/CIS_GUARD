@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCIS Guard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="os-display" id="osDisplay">Detecting OS...</div>
+
+        <div class="button-container">
+            <button class="jump-button" id="jumpButton" onclick="runCISBenchmark()">Run Benchmark</button>
+        </div>
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+        window.onload = () => {
+            ipcRenderer.send('os-detected')
+        };
+
+
+        ipcRenderer.on('os-detected', (event, osName) => {
+            document.getElementById('osDisplay').textContent = `Operating System: ${osName}`;
+        });
+        function runCISBenchmark() {
+            const button = document.getElementById('jumpButton');
+            button.classList.add('no-jump');
+            // alert("")
+            ipcRenderer.send('run-cis-benchmark');
+        }
+    </script>
+
+</body>
+</html>
