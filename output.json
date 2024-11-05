@@ -6,12 +6,6 @@
     "Status": "Pass"
   },
   {
-    "Guideline": "Ensure 'udf' kernel module is not available",
-    "Expected Output": "",
-    "Actual Output": "",
-    "Status": "Pass"
-  },
-  {
     "Guideline": "Ensure 'squashfs' kernel module is not available",
     "Expected Output": "",
     "Actual Output": "",
@@ -58,5 +52,11 @@
     "Expected Output": "nodev",
     "Actual Output": "",
     "Status": "Fail"
+  },
+  {
+    "Guideline": "Ensure 'udf' kernel module is not available",
+    "Expected Output": "",
+    "Actual Output": "",
+    "Status": "Pass"
   }
 ]

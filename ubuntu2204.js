@@ -3,6 +3,8 @@ const { spawn } = require('child_process');
 const csvParser = require('csv-parser');
 const inputFile = 'ubuntu22.csv';
 const outputFile = 'output.json';
+const failed_output_csv = "failed_out.csv"
+
 function runShellCommand(command) {
     return new Promise((resolve, reject) => {
         const shell = spawn('bash', ['-c', command]);
@@ -25,6 +27,7 @@ function runShellCommand(command) {
 async function processCSV() {
     const results = [];
     const promises = [];
+    const failedCases = [];
 
     return new Promise((resolve, reject) => {
         fs.createReadStream(inputFile)
@@ -53,6 +56,9 @@ async function processCSV() {
                         results.push(result);
                         console.log(result);
                         console.log('-----------------------------------');
+                        if(status == 'Fail'){
+                            failedCases.push(result)
+                        }
                     })
                     .catch((error) => {
                         const result = {
@@ -72,6 +78,7 @@ async function processCSV() {
                 try {
                     await Promise.all(promises);
                     writeResultsToJSON(results);
+                    writeFailedCasesToCSV(failedCases);
                     resolve();
                 } catch (error) {
                     reject(error);
@@ -79,6 +86,27 @@ async function processCSV() {
             });
     });
 }
+
+function writeFailedCasesToCSV(failedCases) {
+    const csvContent = [
+        ['Guideline', 'Expected Output', 'Actual Output', 'Status'].join(','),
+        ...failedCases.map(row => [
+            row.Guideline,
+            row['Expected Output'],
+            row['Actual Output'],
+            row['Status']
+        ].join(','))
+    ].join('\n');
+
+    fs.writeFile(failed_output_csv, csvContent, (err) => {
+        if (err) {
+            console.error('Error writing CSV file:', err);
+        } else {
+            console.log('Failed cases have been written to failed_cases.csv');
+        }
+    });
+}
+
 function writeResultsToJSON(results) {
     fs.writeFile(outputFile, JSON.stringify(results, null, 2), (err) => {
         if (err) {
