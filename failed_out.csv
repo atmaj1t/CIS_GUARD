@@ -1,3 +1,3 @@
 Guideline,Expected Output,Actual Output,Status
-Ensure 'nosuid' option is set on '/tmp' partition,nosuid,,Fail
 Ensure 'nodev' option is set on '/tmp' partition,nodev,,Fail
+Ensure 'nosuid' option is set on '/tmp' partition,nosuid,,Fail

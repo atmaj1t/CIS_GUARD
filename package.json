@@ -4,7 +4,9 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-win" : "electron-packager . Miniproject --platform=win32 --arch=x64 --out=dist --overwrite",
+    "package-linux" : "electron-packager . Miniproject --platform=linux --arch=x64 --out=dist --overwrite"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +15,8 @@
     "csv-writer": "^1.6.0",
     "electron": "^32.0.2",
     "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "electron-packager": "^17.1.2"
   }
 }
