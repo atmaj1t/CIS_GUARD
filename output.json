@@ -1,5 +1,17 @@
 [
   {
+    "Guideline": "Ensure 'usb-storage' kernel module is not available",
+    "Expected Output": "",
+    "Actual Output": "",
+    "Status": "Pass"
+  },
+  {
+    "Guideline": "Ensure 'udf' kernel module is not available",
+    "Expected Output": "",
+    "Actual Output": "",
+    "Status": "Pass"
+  },
+  {
     "Guideline": "Ensure 'squashfs' kernel module is not available",
     "Expected Output": "",
     "Actual Output": "",
@@ -36,26 +48,14 @@
     "Status": "Pass"
   },
   {
-    "Guideline": "Ensure 'usb-storage' kernel module is not available",
-    "Expected Output": "",
-    "Actual Output": "",
-    "Status": "Pass"
-  },
-  {
-    "Guideline": "Ensure 'nodev' option is set on '/tmp' partition",
-    "Expected Output": "nodev",
+    "Guideline": "Ensure 'nosuid' option is set on '/tmp' partition",
+    "Expected Output": "nosuid",
     "Actual Output": "",
     "Status": "Fail"
   },
   {
-    "Guideline": "Ensure 'udf' kernel module is not available",
-    "Expected Output": "",
-    "Actual Output": "",
-    "Status": "Pass"
-  },
-  {
-    "Guideline": "Ensure 'nosuid' option is set on '/tmp' partition",
-    "Expected Output": "nosuid",
+    "Guideline": "Ensure 'nodev' option is set on '/tmp' partition",
+    "Expected Output": "nodev",
     "Actual Output": "",
     "Status": "Fail"
   }
